@@ -2,6 +2,7 @@
 This bot will help you track different tea.
 
 ## ToDo
+ - **Refactoring** most important
  - /Add tea
  - /My profile
  - k8s as infra
