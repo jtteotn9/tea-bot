@@ -7,3 +7,4 @@ This bot will help you track different tea.
  - helmwave as IaC
  - CI/CD + k8s secret
  - Add manual for bot and buttons to call commands
+ - move documentation, task into Notion
