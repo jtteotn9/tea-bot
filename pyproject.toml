@@ -10,3 +10,8 @@ dependencies = [
     "python-telegram-bot>=22.5",
     "supabase>=2.13.0",
 ]
+
+[dependency-groups]
+dev = [
+    "flake8>=7.3.0",
+]

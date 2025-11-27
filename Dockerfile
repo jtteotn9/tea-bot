@@ -14,4 +14,4 @@ COPY . .
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-CMD ["/app/.venv/bin/python", "-m", "bot.main", "-m", "bot.main"]
+CMD ["/app/.venv/bin/python", "-m", "bot.main"]
