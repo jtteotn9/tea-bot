@@ -84,16 +84,13 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           
-          # Клонируем инфра-репо, используя ваш секретный токен
           git clone https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/${{ env.INFRA_REPO }}.git infra-repo
           cd infra-repo/k8s
           
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           
-          # Устанавливаем kustomize
-          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash -s -- 5.4.2
           
-          # Меняем тег
           ./kustomize edit set image ghcr.io/${{ github.repository }}=ghcr.io/${{ github.repository }}:sha-${SHORT_SHA}
           
           rm kustomize
