@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tea-bot
+  namespace: default
+  labels:
+    app: tea-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tea-bot
+  template:
+    metadata:
+      labels:
+        app: tea-bot
+    spec:
+      containers:
+      - name: tea-bot
+        image: ghcr.io/jtteotn9/tea-bot:latest
+        imagePullPolicy: Always
+        envFrom:
+        - secretRef:
+            name: tea-bot-env
