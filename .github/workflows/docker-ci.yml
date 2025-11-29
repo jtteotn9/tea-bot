@@ -88,7 +88,14 @@ jobs:
           cd infra-repo/k8s
           
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            TARGET_DIR="k8s/overlays/prod"
+          else
+            TARGET_DIR="k8s/overlays/dev"
+          fi
           
+          cd infra-repo/$TARGET_DIR 
+
           curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash -s -- 5.4.2
           
           ./kustomize edit set image ghcr.io/${{ github.repository }}=ghcr.io/${{ github.repository }}:sha-${SHORT_SHA}
