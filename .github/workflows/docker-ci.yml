@@ -85,7 +85,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           
           git clone https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/${{ env.INFRA_REPO }}.git infra-repo
-          cd infra-repo/k8s
           
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
