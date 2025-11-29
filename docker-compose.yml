@@ -1,0 +1,12 @@
+services:
+  bot:
+    image: tea_bot:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tea-bot
+    command: sleep 10000
+    env_file:
+      - .env
+    volumes:
+      - ./bot:/app/bot
