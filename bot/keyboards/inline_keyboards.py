@@ -4,8 +4,8 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 def get_gender_keyboard() -> InlineKeyboardMarkup:
     """Returns gender"""
     builder = InlineKeyboardBuilder()
-    builder.add(InlineKeyboardButton(text="Человек👍", callback_data="gender_male"))
-    builder.add(InlineKeyboardButton(text="Ж*нщина👎", callback_data="gender_female"))
+    builder.add(InlineKeyboardButton(text="Мужчина", callback_data="gender_male"))
+    builder.add(InlineKeyboardButton(text="Женщина", callback_data="gender_female"))
     builder.adjust(2)
     return builder.as_markup()
 
