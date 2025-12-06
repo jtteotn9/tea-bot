@@ -33,8 +33,8 @@ async def proccess_gender_press(callback: CallbackQuery, state: FSMContext):
         await callback.message.answer(
             "Ура, регистрация завершилась\n"
             f"Имя: {user_data['name']}\n"
-            f"Пол: {user_data['gender']}"
-            "На данный момент чтобы добавить чай введи команду /add_tea"
+            f"Пол: {user_data['gender']}\n"
+            "На данный момент чтобы добавить чай введи команду - /add_tea"
         )
     else:
         await callback.message.answer(f"Что-то пошло не так(")

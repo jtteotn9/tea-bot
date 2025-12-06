@@ -25,7 +25,7 @@ async def handle_start(message: Message, state: FSMContext):
         await state.clear()
     else:
         await message.answer("Заполни форму регистрации")
-        await message.answer("Выбери свой пол:")
+        await message.answer("Выбери себе имя:")
         await state.set_state(RegistrationForm.waiting_for_name)
 
 @common_router.message(Command('cancel'), F.state != None) 
