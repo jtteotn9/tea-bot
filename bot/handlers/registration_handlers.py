@@ -5,7 +5,6 @@ from aiogram.fsm.context import FSMContext
 from ..fsm.states import RegistrationForm
 from ..keyboards.inline_keyboards import get_gender_keyboard
 from ..db import queries as db
-from ..config import WOMEN
 
 reg_router = Router()
 
@@ -20,14 +19,9 @@ async def proccess_name(message: Message, state: FSMContext):
 
 @reg_router.callback_query(RegistrationForm.waiting_for_gender, F.data.startswith("gender_"))
 async def proccess_gender_press(callback: CallbackQuery, state: FSMContext):
-    gender_value = "Человек" if callback.data == "gender_male" else "Ж*нщина"
+    gender_value = "Мужчина" if callback.data == "gender_male" else "Женщина"
     
     await callback.answer(f"Выбран пол: {gender_value}")
-    if gender_value == "Ж*нщина":
-        await callback.message.answer_animation(
-            animation=WOMEN,
-            caption="ААААААААА Ж*НЩИНА"
-            )
     await callback.message.edit_reply_markup(reply_markup=None)
     await state.update_data(gender=gender_value)
     
@@ -40,6 +34,7 @@ async def proccess_gender_press(callback: CallbackQuery, state: FSMContext):
             "Ура, регистрация завершилась\n"
             f"Имя: {user_data['name']}\n"
             f"Пол: {user_data['gender']}"
+            "На данный момент чтобы добавить чай введи команду /add_tea"
         )
     else:
         await callback.message.answer(f"Что-то пошло не так(")
