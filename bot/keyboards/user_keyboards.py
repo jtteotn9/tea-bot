@@ -6,7 +6,7 @@ def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [
-                KeyboardButton(text="Добавить чай 🍵"),
+                KeyboardButton(text="/add_tea"),
                 KeyboardButton(text="Мои чаи 📋"),
             ],
         ],
